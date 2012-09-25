@@ -14,6 +14,7 @@
 
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/theme/default.css" id="theme">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 
 	<!-- For syntax highlighting -->
 	<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -35,21 +36,18 @@
       <div class="slides">
 
         <section>
-          <br>
-          </br>
+          <p> A simple intrudoction to </p>
+          <br />
           <h2>Reveal.js</h2>
-          <br>
-          </br>
-          <p>and</p>
-          <br>
-          </br>
-          <h2>Scope in Javascript</h2>
+          <p style="position:fixed; top:80%; left:70%"> by Han Xiao </p>
         </section>
 
         <section>
           <h2>What is reveal.js?</h2>
-          <p class="fragment">A <a href="#/1">FRAMEWORK</a> to create presentations</p>
-          <p class="fragment">Using <strong>HTML</strong></p>
+          <div class="fragment">
+            <p>A <a href="#/1">FRAMEWORK</a> to create presentations</p>
+            <p>Using <strong>HTML</strong></p>
+          </div>
         </section>
 
         <section>
@@ -148,32 +146,127 @@
   * item2
 &lt;/section&gt;
           </code></pre>
+          <p>by using <a href="https://github.com/coreyti/showdown">showdown.js</a></p>
         </section>
+
+        <section>
+          <h2> code highlight </h2>
+		  <pre><code contenteditable>
+function hight() {
+  var prompt = "Hello world";
+
+  alert(prompt);
+}
+          </code></pre>
+		  <p>Supported by <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
+          </section>
 
         <section>
           <section>
             <h2>Pure Web</h2>
             <p class="fragment">Which means</p>
-            <p class="fragment">We can use anything as developing a website</p>
-			<a href="#/8/1" class="image fragment">
-			  <img width="89" height="117" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-			</a>
+            <div  class="fragment">
+              <p>We can use anything as developing a website</p>
+			  <a href="#/8/1" class="image">
+			    <img width="89" height="117" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+			  </a>
+            </div>
           </section>
 
           <section>
             <p> Like insert an img </p> 
             <img width="375" height="300" src="img/success.jpg" alt="success">
-            <p>
-			  <a href="#/8/1" class="image">
-			    <img width="89" height="117" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-			  </a>
-            </p>
+		    <pre><code contenteditable>
+&lt;img width="375" height="300" src="img/success.jpg" alt="success"&gt;
+            </code></pre>
           </section>
 
           <section>
             <p> Or a GIF </p>
             <img width="210" height="158" src="img/voice.gif" alt="VoiceOfLab">
+		    <pre><code contenteditable>
+&lt;img width="210" height="158" src="img/voice.gif" alt="VoiceOfLab"&gt;
+            </code></pre>
           </section>
+
+          <section>
+            <p> And even a video </p>
+            <iframe width="640" height="360" src="http://www.youtube.com/embed/u5X5cV-4LRo?rel=0" frameborder="0" allowfullscreen></iframe>
+		    <pre><code contenteditable>
+&lt;iframe width="640" height="360" src="http://www.youtube.com/embed/u5X5cV-4LRo?rel=0" frameborder="0" allowfullscreen>&lt;/iframe&gt;
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <h2>Mobile support</h2>
+          <br />
+          <p> Runs well on Android 4.1 with default browser</p>
+          <p> and </p>
+          <p> 3D transforms have been <a href="http://www.webkit.org/blog/386/3d-transforms/">supported</a> on iPhone since 2.0</p>
+        </section>
+
+        <section>
+          <h2>Using any Javascript and CSS</h2>
+          <br />
+          <p>like <a id="jquery-link" href="http://jquery.com/">jQuery</a></p>
+          <br />
+          <button class="btn btn-large btn-inverse">And</button>
+          <button class="btn btn-large">of</button>
+          <button class="btn btn-large btn-info">cause</button>
+          , 
+          <button class="btn btn-large btn-success">we</button>
+          <button class="btn btn-large btn-warning">can</button>
+          <button class="btn btn-large btn-danger">use</button>
+          <button id="bootstrap-btn" class="btn btn-large btn-primary">Bootstrap</button></p>
+        </section>
+
+        <section>
+          <h2>If this does not satisfy you</h2>
+          <p>It is easy to write our own library using Javascript/CSS</p>
+        </section>
+
+        <section>
+          <h2>Missing a PDF?</h2>
+          <p>It can be printed to a PDF by using Chrome</p>
+          <img src="img/print-pdf.png" alt="Print to PDF">
+        </section>
+
+        <section>
+          <h2>And many other features</h2>
+          <ul>
+            <li>Speaker notes by Node.js</li>
+            <li>Theme support</li>
+            <li>Different transitions</li>
+            <li>Custom events</li>
+            <li>Authoring tools. <a href="www.rvl.io">rvl.io</a></li>
+            <li>...</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>But, it has some Cons</h2>
+          <ul>
+            <li>Depends on CSS3 3D</li>
+            <li>Not easy to code</li>
+            <li>Not good to publish</li>
+            <li>Sometimes requires network</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Reference</h2>
+          <ul>
+            <li>Reveal.js on <a href="https://github.com/hakimel/reveal.js">Github</a></li>
+            <li><a href="http://lab.hakim.se/reveal-js/">Demo slides</a> of reveal.js</li>
+            <li>Intrudoction to <a href="http://desandro.github.com/3dtransforms/">CSS3 3D Transform</a></li>
+            <li>Compare to <a href="http://bartaz.github.com/impress.js/">impress.js</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h1> Thank you! </h1>
+        </section>
       </div>
 
 	  <!-- The navigational controls UI -->
@@ -210,6 +303,8 @@
 	  { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
 	  { src: 'lib/js/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 	  { src: 'lib/js/data-markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+	  { src: 'lib/js/jquery-1.8.2.min.js', async: true, callback: function() {} },
+	  { src: 'lib/js/mytalk.js', async: true, callback: function() {} },
 	  { src: '/socket.io/socket.io.js', async: true, condition: function() { return window.location.host === 'localhost:1947'; } },
 	  { src: 'plugin/speakernotes/client.js', async: true, condition: function() { return window.location.host === 'localhost:1947'; } },
 	  ]
