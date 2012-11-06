@@ -50,7 +50,7 @@
             <li>Another way to write Unit Test</li>
           </ul>
           <div>
-        <img src="img/tdd.jpg" alt="TDD">
+        <img src="img/tdd.gif" alt="TDD">
       </div>
         </section>
 
@@ -58,11 +58,11 @@
       <h2>Writing Test by Scenario</h2>
       <br />
       <div style="text-align: left;">
-        <p><a>Scenario 1</a>: Calculator can add integers </p>
+        <p><a>Scenario </a>: Calculator can add integers </p>
         <br />
         <p><a>Given</a> a calculator</p>
         <p><a>And</a> two integers</p>
-        <p><a>When</a> calling add function</p>
+        <p><a>When</a> calling 'add' function</p>
         <p><a>It </a> should return the sum</p>
       </div>
     </section>
@@ -75,7 +75,7 @@ public class TestCalculator {
 
     @Before
     public void setUp() {
-        cal = new Calculator();
+        Calculator cal = new Calculator();
     }
 
     @Test
@@ -152,10 +152,54 @@ function Calculator() {
 
     <section>
       <h2>See it pass!</h2>
-      <img width="843" height="259" src="img/pass.png"/>
+      <img width="952" height="432" src="img/pass.png"/>
     </section>
 
-      </div>
+    <section>
+      <h2>More matchers</h2>
+      <pre><code contenteditable>
+expect(a).toBe(b);
+expect(a).not.toBe(null);
+
+expect(a.foo).toBeDefined();
+expect(a.bar).toBeUndefined();
+
+expect(bar).toThrow();
+expect(foo).not.toThrow();
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>Test with jQuery</h2>
+      <p>Use <a href="https://github.com/velesin/jasmine-jquery">jasmine-jquery</a></p>
+      <pre><code contenteditable>
+loadFixtures('index.html');
+
+expect($('#some-id')).toBeVisible();
+expect($('#some-id')).toBeHidden();
+
+expect($('#some-id')).toHaveClass("in");
+expect($('#some-id')).not.toHaveClass("error");
+
+expect($('#some-id')).toBeDisabled();
+expect($('#some-id')).toBeFocused();
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>Reference</h2>
+      <ul>
+        <li><a href="https://en.wikipedia.org/wiki/Behavior-driven_development">Behavior-driven development</a></li>
+        <li><a href="http://pivotal.github.com/jasmine/">Official Jasmine Document</a></li>
+        <li><a href="http://qunitjs.com/">QUnit</a>: unit test framework for javascript</li>
+        <li><a href="https://github.com/velesin/jasmine-jquery">jasmine-jquery</a> on Github</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Thanks!</h2>
+    </section>
+  </div>
 
     <!-- The navigational controls UI -->
     <aside class="controls">
