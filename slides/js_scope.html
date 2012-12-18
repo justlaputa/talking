@@ -1,119 +1,115 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+    <head>
+        <meta charset="utf-8">
 
-		<title>LT by Han - Scope in Javascript</title>
+        <title>LT by Han - Scope in Javascript</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Hakim El Hattab">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<link rel="stylesheet" href="../reveal.js/css/reveal.min.css">
-		<link rel="stylesheet" href="../reveal.js/css/theme/serif.css" id="theme">
+        <link rel="stylesheet" href="../reveal.js/css/reveal.min.css">
+        <link rel="stylesheet" href="../reveal.js/css/theme/serif.css" id="theme">
 
-		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
 
-		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
-		<script>
-			document.write( '<link rel="stylesheet" href="../reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
-		</script>
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+            document.write( '<link rel="stylesheet" href="../reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
 
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
 
-	<body>
+    <body>
 
-		<div class="reveal">
+        <div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
 
-				<section>
-					<h2>To know Javascript</h2>
-					<h4> - Scope and Hoisting</h4>
-					<p>
-						<small> By <a href="http://github.com/justlaputa">Han Xiao</a> / <a href="http://twitter.com/justlaputa">@justlaputa</a>
-						</small>
-					</p>
-				</section>
+                <section>
+                    <h2>To know Javascript</h2>
+                    <h4> - Scope and Hoisting</h4>
+                    <p>
+                        <small> By <a href="http://github.com/justlaputa">Han Xiao</a> / <a href="http://twitter.com/justlaputa">@justlaputa</a>
+                        </small>
+                    </p>
+                </section>
 
-				<section>
-					<h2>How I met Javascript</h2>
-					<p class="fragment roll-in">
-						<img src="img/jquery_logo.png" alt="jQuery: Write Less, Do More." height="153" width="418">
-					</p>
-				</section>
+                <section>
+                    <h2>How I met Javascript</h2>
+                    <p class="fragment roll-in">
+                        <img src="img/jquery_logo.png" alt="jQuery: Write Less, Do More." height="153" width="418">
+                    </p>
+                </section>
 
-				<section>
-					<h2>$ -> GOD</h2>
-					<pre><code contenteditable>
+                <section>
+                    <h2>$ -> GOD</h2>
+                    <pre><code contenteditable>
 $('#select-any-thing').do_this().do_that();
-					</code></pre>
-					<p>
-						<q>jQuery is part of Javascript</q>
-					</p>
-				</section>
+                    </code></pre>
+                    <p>
+                        <q>jQuery is part of Javascript</q>
+                    </p>
+                </section>
 
-				<section>
-					<h2>Javascript is wonderful!!</h2>
-				</section>
+                <section>
+                    <h2>Javascript is wonderful!!</h2>
+                </section>
 
-				<section>
-					<h2>But, Really?</h2>
-				</section>
+                <section>
+                    <h2>But, Really?</h2>
+                </section>
 
-				<section>
-					<h2>In the real world</h2>
-					<h4>What makes me crazy</h4>
-					<ul>
-						<li class="fragment highlight-red">
-							Scope
-						</li>
-						<li>
-							Function & Object
-						</li>
-						<li>
-							Closure
-						</li>
-						<li>
-							Prototype
-						</li>
-					</ul>
-				</section>
+                <section>
+                    <h2>In the real world</h2>
+                    <h4>What makes me crazy</h4>
+                    <ul>
+                        <li class="fragment highlight-red">
+                            Scope
+                        </li>
+                        <li>
+                            Function & Object
+                        </li>
+                        <li>
+                            Closure
+                        </li>
+                        <li>
+                            Prototype
+                        </li>
+                    </ul>
+                </section>
 
-				<section>
-					<h3>Let's talk about Scope</h3>
-					<pre><code>
+                <section>
+                    <h3>Let's talk about Scope</h3>
+                    <pre><code>
 var foo = "foo";
 
 function scope() {
     var bar = "bar";
 
-    console.log("I can see foo:", foo);
-    console.log("I can also see bar:", bar);
+    console.log("I can see foo:", foo);       //OK
+    console.log("I can also see bar:", bar);  //Also OK
 }
 
 scope();
 
-console.log("foo is a global variable:", foo);
-console.log("but bar is local:", bar);
-					</code></pre>
-					<p>I can see foo: foo</p>
-					<p>I can also see bar: bar</p>
-					<p>foo is a global variable: foo</p>
-					<p style="color : red;">ReferenceError: bar is not defined</p>
-				</section>
+console.log("foo is a global variable:", foo); //OK, foo is global
+console.log("but bar is local:", bar); //ReferenceError: bar is not defined
+                    </code></pre>
+                </section>
 
-				<section>
-					<h3>Use <strong style="color: red;">var</strong></h3>
-					<pre><code contenteditable>
+                <section>
+                    <h3>Use <strong style="color: red;">var</strong></h3>
+                    <pre><code contenteditable>
 function scope() {
     foo = 1;
 }
@@ -121,8 +117,8 @@ function scope() {
 scope();
 
 console.log(foo); // 1
-					</code></pre>
-					<pre><code contenteditable>
+                    </code></pre>
+                    <pre><code contenteditable>
 function scope() {
     var foo = 1;
     console.log(foo);
@@ -131,58 +127,225 @@ function scope() {
 scope();
 
 console.log(foo); // ReferenceError: foo is not defined
-					</code></pre>
-				</section>
+                    </code></pre>
+                </section>
 
-				<section>
-					<h3>Functional scope VS. Block scope</h3>
-					<p>In Java || C || C++</p>
-					<pre><code contenteditable>
+                <section>
+                    <h3>Block scope VS. Function scope</h3>
+                    <p>In Java(C, C++)</p>
+                    <pre><code contenteditable>
 public class Scope {
-	public static void main(Strings[] args {
-		{
-			String inBlock = "i'm in block";
-			System.out.println(inBlock);
-		}
+    public static void main(String[] args) {
+        if(true) {
+            String inBlock = "i'm in block";
+            System.out.println(inBlock);
+        }
 
-		System.out.println(inBlock);
-	}
+        System.out.println(inBlock); //cannot find symbol
+    }
 }
-					</code></pre>						
-				</section>
-			</div>
+                    </code></pre>
+                </section>
 
-		</div>
+                <section>
+                    <h3>In Javascript</h3>
+                    <pre><code contenteditable>
+function scope() {
+    if(1) {
+        var in_block = "I'm in block";
+        console.log(in_block);  // I'm in block
+    }
 
-		<script src="../reveal.js/lib/js/head.min.js"></script>
-		<script src="../reveal.js/js/reveal.min.js"></script>
+    console.log(in_block);  // I'm in block
+}
 
-		<script>
+scope(); 
+                  </code></pre>
+                </section>
 
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+                <section>
+                    <h3>Function Scope?</h3>
+                    <pre><code>
+function scope() {
 
-				theme: Reveal.getQueryHash().theme || '', // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/none
+  function inner() {
+      var inFunction = "I'm in function";
+      
+      console.log(inFunction);  //I'm in function
+  }
+  
+  inner();
+  
+  console.log(inFunction); //ReferenceError
+}
 
-				// Optional libraries used to extend on reveal.js
-				dependencies: [
-					{ src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: '../reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: '../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: '../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: '../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
-			});
+scope();
+                    </code></pre>
+                </section>
 
-		</script>
+                <section>
+                    <h3>Hoisting?</h3>
+                    <pre><code>
+var foo = 1;
+function hoist() {
+    foo = 100;
+    console.log(foo);
+    return;
+    var foo;
+}
+hoist();
+console.log(foo); // 100 ? 1 ?
+                    </code></pre>
+                    <pre class="fragment"><code>
+var foo = 1;
+function hoist() {
+    var foo;
+    foo = 100;
+    console.log(foo);
+    return;
+}
+hoist();
+console.log(foo); // 1
+                    </code></pre>
+                </section>
 
-	</body>
+                <section>
+                    <h3>What's happened?</h3>
+                    <pre><code>
+function foo() {
+    bar();
+    var x = 1;
+}
+                    </code></pre>
+                    <pre class="fragment"><code>
+function foo() {
+    var x;
+    bar();
+    x = 1;
+}
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Even if it never executes</h3>
+                    <pre><code>
+function foo() {
+    if (false) {
+        var x = 1;
+    }
+    return;
+    var y = 1;
+}
+                    </code></pre>
+                    <pre><code>
+function foo() {
+    var x, y;
+    if (false) {
+        x = 1;
+    }
+    return;
+    y = 1;
+}
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>How about functions?</h3>
+                    <pre><code>
+function hoist() {
+    foo();
+    bar();
+    var foo = function() {
+        console.log("in foo");
+    };
+    function bar() {
+        console.log("in bar");
+    }
+}
+
+hoist();
+                    </code></pre>
+                    <pre><code>
+function hoist() {
+    var foo;
+    function bar() {
+        console.log("in bar");
+    }
+    foo();
+    bar();
+    foo = function() {
+        console.log("in foo");
+    };
+}
+
+hoist();
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Now, what should we do?</h3>
+                    <p>Follow <strong>JSLint</strong></p>
+                    <ul>
+                        <li>Declare variables with <span style="color: red;">var</span></li>
+                        <li>Declare all variable with one <span style="color: red;">var</span></li>
+                        <li>And declare at the begining of the scope</li>
+                    </ul>
+                    <pre><code>
+function scope() {
+    var foo,
+    bar = "bar",
+    foobar;
+    
+    //do things
+}
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>References</h3>
+                    <ul>
+                        <li><a href="http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting">JavaScript Scoping and Hoisting</a></li>
+                        <li><a href="http://www.amazon.com/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742">JavaScript: The Good Parts</a></li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Thanks!</h2>
+                    <aside style="position: fixed; right: 10%; top: 90%;">つづく...</aside>
+                </section>
+            </div>
+
+        </div>
+
+        <script src="../reveal.js/lib/js/head.min.js"></script>
+        <script src="../reveal.js/js/reveal.min.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme || '', // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/none
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: '../reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: '../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: '../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                    // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
 </html>
