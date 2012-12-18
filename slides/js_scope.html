@@ -74,16 +74,16 @@ $('#select-any-thing').do_this().do_that();
                     <h4>What makes me crazy</h4>
                     <ul>
                         <li class="fragment highlight-red">
-                            Scope
+                            Scope, hoist
                         </li>
                         <li>
-                            Function & Object
+                            Function, object
                         </li>
                         <li>
-                            Closure
+                            Closure, module
                         </li>
                         <li>
-                            Prototype
+                            Prototype, inherit
                         </li>
                     </ul>
                 </section>
@@ -108,7 +108,7 @@ console.log("but bar is local:", bar); //ReferenceError: bar is not defined
                 </section>
 
                 <section>
-                    <h3>Use <strong style="color: red;">var</strong></h3>
+                    <h3>Why use <strong style="color: red;">var</strong></h3>
                     <pre><code contenteditable>
 function scope() {
     foo = 1;
@@ -132,7 +132,10 @@ console.log(foo); // ReferenceError: foo is not defined
 
                 <section>
                     <h3>Block scope VS. Function scope</h3>
-                    <p>In Java(C, C++)</p>
+                </section>
+
+                <section>
+                    <h3>In Java(C, C++)</h3>
                     <pre><code contenteditable>
 public class Scope {
     public static void main(String[] args) {
@@ -189,7 +192,7 @@ scope();
 var foo = 1;
 function hoist() {
     foo = 100;
-    console.log(foo);
+    console.log(foo); // 100
     return;
     var foo;
 }
