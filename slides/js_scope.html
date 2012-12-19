@@ -162,7 +162,7 @@ function scope() {
     console.log(in_block);  // I'm in block
 }
 
-scope(); 
+scope();
                   </code></pre>
                 </section>
 
@@ -173,12 +173,12 @@ function scope() {
 
   function inner() {
       var inFunction = "I'm in function";
-      
+
       console.log(inFunction);  //I'm in function
   }
-  
+
   inner();
-  
+
   console.log(inFunction); //ReferenceError
 }
 
@@ -268,14 +268,14 @@ function hoist() {
 
 hoist();
                     </code></pre>
-                    <pre><code>
+                    <pre class="fragment"><code>
 function hoist() {
     var foo;
     function bar() {
         console.log("in bar");
     }
-    foo();
-    bar();
+    foo();  // foo is not a function
+    bar();  // OK
     foo = function() {
         console.log("in foo");
     };
@@ -298,7 +298,7 @@ function scope() {
     var foo,
     bar = "bar",
     foobar;
-    
+
     //do things
 }
                     </code></pre>
