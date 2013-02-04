@@ -26,7 +26,22 @@ html
     .reveal
       .slides
         section
-          h2 Javascript of CLM Project
+          h2 Javascript Project in CLM
+        section
+          h3 What I'm gonna share
+          ul
+            li Js project structure of CLM
+            li Why we use RequireJS
+        section
+          h3 Then
+          ul
+            li BDD with Jasmine
+            li Test js in browsers
+            li Why we switch to Test'em
+            li Get coverage and use Sonar
+            li Integrate with Jenkins
+        section
+          h3 Structure of our JS code
         section
           img(src="img/CLM-JS-Structure.svg")
         section
@@ -42,7 +57,7 @@ html
             li SERVICE -> Call api
             li API&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> Already there
         section
-          h2 Test it
+          h2 Easy to test
           ul
             li DOM: mock jQuery
             li SERVICE: mock API
@@ -95,8 +110,27 @@ html
               &lt;script src=&quot;/src/main/js/service/videoService.js&quot;&gt;&lt;/script&gt;
               &lt;/head&gt;
         section
+          h3 What's the problem?
           ul
             li Individual HTTP request for each &lt;script&gt;
+            li Dependency management is hard
+        section
+          h3 Asynchronous Module Definition
+          p Define module with Dependencies
+          br
+          p DOM.js depends on jQuery
+          pre
+            code(contenteditable)
+              | define(['jquery', 'exports', 'bootstrap'], function($, exports) {
+              |   ...
+              | })
+          br
+          p SERVICE.js depends on DOM and API
+          pre
+            code(contenteditable)
+              | define(['xxxDom', 'xxxAPI', 'eventbus'], function(dom, api, eventbus) {
+              |   ...
+              | })
         section
           h3 Using RequireJS
           pre
@@ -123,23 +157,6 @@ html
               |          'scorm-api-adapter',
               |          'auto-scroll',
               |          'adminPageService'])
-        section
-          h3 Asynchronous Module Definition
-          p Define module with Dependencies
-          br
-          p DOM.js depends on jQuery
-          pre
-            code(contenteditable)
-              | define(['jquery', 'exports', 'bootstrap'], function($, exports) {
-              |   ...
-              | })
-          br
-          p SERVICE.js depends on DOM and API
-          pre
-            code(contenteditable)
-              | define(['xxxDom', 'xxxAPI', 'eventbus'], function(dom, api, eventbus) {
-              |   ...
-              | })
         section
           h3 Code Optimization
           p using <strong>r.js</strong>
@@ -189,6 +206,84 @@ html
         section
           h3 Test in browsers
           img(src="img/browsers.jpg")
+        section
+          h3 JsTD
+          h4 js-test-driver
+          img(src="img/jstd.png")
+        section
+          h3 Pros & Cons:
+          ul
+            li Written in Java
+            li Maven plugin
+            li Coverage in the way
+          ul
+            li Inactive development
+            li Not easy to run manually
+            li Slow...
+        section
+          h3 Nobody like Slow-test
+          h4 Even <span style="color: red;">Jenkins</span>
+          img(src="img/jenkins.png")
+        section
+          h3 Switch to "Test'em"
+          blockquote
+            | makes it so easy that you will actually want to write tests.
+        section
+          h3 Why we chose it
+          ul
+            li By javascript runs in <strong>Node.js</strong>
+            li Cross platform
+            li Supports IE 7~9(by compatibility mode)
+            li Integrates with Jenkins
+            li Auto-refresh
+        section
+          h3 Written by js, runs in Node
+          pre
+            code(contenteditable)
+              | $ npm install -g testem
+              | $ testem
+          img(src="img/testem.png")
+        section
+          h3 Cross Platform
+          h4 supports IE 7~9(by compatibility mode)
+          pre
+            code(contenteditable)
+              | $ testem launchers
+        section
+          h3 Auto Refresh
+          h4 make writing test fun
+        section
+          img(src="testem_autorefresh.png")
+        section
+          h3 Incredibly Fast
+        section
+          h3 Coverage
+        section
+          h3 Why we need coverage
+        section
+          h3 Code coverage === Coverage of <strong>Test</strong>
+        section
+          h3 High coverage === Highly Tested code
+        section
+          h3 Highly Tested === Easy to Refactor
+        section
+          h3 So, We need to get coverage
+          h4 In "Test'em"
+        section
+          h3 How
+          ul
+            li Instrument with node-jscoverage
+            li Using PhantomJS as launcher
+            li Inject lcov-reporter into browser
+        section
+          h3 Using Sonar to visualize it
+        section
+          h3 Integrate with Jenkins
+          ul
+            li run Test'em in POST build script
+            li use TAP as reporter
+        section
+          h2 Thanks for coming!
     script(src="lib/js/head.min.js")
     script(src="js/reveal.min.js")
 
