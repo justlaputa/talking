@@ -11,9 +11,9 @@ html
     meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
 
     link(rel="stylesheet", href="css/reveal.min.css")
-    link(rel="stylesheet", href="css/theme/default.css", id="theme")
+    link(rel="stylesheet", href="css/theme/serif.css", id="theme")
 
-    link(rel="stylesheet", href="lib/css/zenburn.css")
+    link(rel="stylesheet", href="css/github.css")
 
     <!-- If the query includes 'print-pdf', use the PDF print sheet -->
     script
@@ -26,9 +26,169 @@ html
     .reveal
       .slides
         section
-          h1 Jade
+          h2 Javascript of CLM Project
         section
-          h1 Page2
+          img(src="img/CLM-JS-Structure.svg")
+        section
+          h3 Why <a>DOM-SERVICE-API</a>
+          ul
+            li Simple
+            li Testable
+            li Maintainable
+        section
+          h2 Simple is everything
+          ul
+            li DOM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> jQuery
+            li SERVICE -> Call api
+            li API&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> Already there
+        section
+          h2 Test it
+          ul
+            li DOM: mock jQuery
+            li SERVICE: mock API
+            li API: we do not need
+        section
+          h2 About maintainence
+          p We need <strong style="color: red;">RequireJS</strong>
+        section
+          h2 Without RequireJS
+          pre
+            code(contenteditable)
+              &lt;head&gt;
+              &lt;script src=&quot;lib/customLib/scorm-api-adapter.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;lib/copiedLib/eventbus.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;lib/copiedLib/lib/jquery.i18n.properties-1.0.9.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;lib/copiedLib/localizer.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/lib/base64.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/lib/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/lib/html5.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/lib/jquery-1.8.1.min.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/lib/SCORM_12_APIWrapper.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/lib/useragents.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/entity/enums.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/entity/globalVariables.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/event/event.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/dom/examDom.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/dom/finishDom.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/dom/initDom.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/dom/messageDom.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/dom/noteDom.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/dom/noteListDom.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/dom/pageJumpDom.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/dom/statusDom.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/dom/videoDom.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/api/examApi.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/api/finishApi.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/api/initApi.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/api/noteApi.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/api/pageJumpApi.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/api/statusApi.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/api/videoApi.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/service/examService.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/service/finishService.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/service/initService.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/service/messageService.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/service/noteListService.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/service/noteService.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/service/pageJumpService.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/service/statusService.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;/src/main/js/service/videoService.js&quot;&gt;&lt;/script&gt;
+              &lt;/head&gt;
+        section
+          ul
+            li Individual HTTP request for each &lt;script&gt;
+        section
+          h3 Using RequireJS
+          pre
+            code(contenteditable)
+              &lt;head&gt;
+              &nbsp;&nbsp;&lt;script data-main=&quot;/js/main&quot; src=&quot;/js/lib/require.js&quot;&gt;&lt;/script&gt;
+              &lt;/head&gt;
+          p main.js
+          pre
+            code(contenteditable)
+              | require(['toolbarService',
+              |          'coursePaneService',
+              |          'courseListService',
+              |          'examPageService',
+              |          'examQuestionService',
+              |          'examToolbarService',
+              |          'notificationService',
+              |          'previewService',
+              |          'signUpService',
+              |          'userControllService',
+              |          'changePasswordService',
+              |          'keywordService',
+              |          'validateService',
+              |          'scorm-api-adapter',
+              |          'auto-scroll',
+              |          'adminPageService'])
+        section
+          h3 Asynchronous Module Definition
+          p Define module with Dependencies
+          br
+          p DOM.js depends on jQuery
+          pre
+            code(contenteditable)
+              | define(['jquery', 'exports', 'bootstrap'], function($, exports) {
+              |   ...
+              | })
+          br
+          p SERVICE.js depends on DOM and API
+          pre
+            code(contenteditable)
+              | define(['xxxDom', 'xxxAPI', 'eventbus'], function(dom, api, eventbus) {
+              |   ...
+              | })
+        section
+          h3 Code Optimization
+          p using <strong>r.js</strong>
+          pre
+            code(contenteditable)
+              | $ cat app.build.js
+              | ({
+              |    appDir: "../",
+              |    baseUrl: "js",
+              |    dir: "../../target",
+              |    modules: [
+              |        {
+              |            name: "main"
+              |        }
+              |    ]
+              | })
+              | $ node r.js -o app.build.js
+        section
+          h3 Questions for 1st Part
+        section
+          h1 Part 2: Test
+        section
+          h2 We do BDD with Jasmine
+        section
+          h3 BDD is <strong>writable</strong> & <strong>readable</strong>
+          pre
+            code(contenteditable)
+              | describe("click add new question button", function() {
+              |   describe("when add questions in one page", function() {
+              |     it("should send the right sequence number", function() {
+              |       //Write you test here
+              |     });
+              |   });
+              | });
+        section
+          h3 Jasmine
+          h4 writing test naturally
+          pre
+            code(contenteditable)
+              | expect(sum).toEqual(10);
+              | expect(result).toContain("foo")
+              | expect(myFunction).toHaveBeenCalled()
+              | expect(myFunction).toHaveBeenCalledWith(1, 2)
+        section
+          h3 Read the result
+          img(src="img/bdd_jasmine.png")
+        section
+          h3 Test in browsers
+          img(src="img/browsers.jpg")
     script(src="lib/js/head.min.js")
     script(src="js/reveal.min.js")
 
@@ -42,7 +202,7 @@ html
         center: true,
 
         theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+        transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
 
         // Optional libraries used to extend on reveal.js
         dependencies: [
