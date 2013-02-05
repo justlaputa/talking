@@ -41,7 +41,7 @@ html
             li Get coverage and use Sonar
             li Integrate with Jenkins
         section
-          h3 Structure of our JS code
+          h2 Part1: Structure
         section
           img(src="img/CLM-JS-Structure.svg")
         section
@@ -58,10 +58,37 @@ html
             li API&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> Already there
         section
           h2 Easy to test
-          ul
-            li DOM: mock jQuery
-            li SERVICE: mock API
-            li API: we do not need
+        section
+          h3 Test DOM: Mock HTML
+          pre
+            code(contenteditable)
+              | beforeEach(function() {
+              |   jasmine.getFixtures().fixturesPath = '/src/test/testem/fixtures';
+              |   loadFixtures('navigation.html');
+              | });
+              | describe('add question', function() {
+              |   it('should add question in page', function() {
+              |     $('#question-form .add-question').click();
+              |     expect(...)
+              |   });
+              | })
+        section
+          h3 Test SERVICE: Mock API
+          pre
+            code(contenteditable)
+              | spyOn(api, 'addQuestion').andReturn(
+              |     {
+              |         done: function() { return this; },
+              |         fail: function() { return this; }
+              |     }
+              | );
+              | describe('when add questions in one page', function() {
+              |   it('should send the right sequence number', function() {
+              |     expect(api.addQuestion).toHaveBeenCalled();
+              |   });
+              | });
+        section
+          h3 API: we do not need to test
         section
           h2 About maintainence
           p We need <strong style="color: red;">RequireJS</strong>
@@ -69,7 +96,6 @@ html
           h2 Without RequireJS
           pre
             code(contenteditable)
-              &lt;head&gt;
               &lt;script src=&quot;lib/customLib/scorm-api-adapter.js&quot;&gt;&lt;/script&gt;
               &lt;script src=&quot;lib/copiedLib/eventbus.js&quot;&gt;&lt;/script&gt;
               &lt;script src=&quot;lib/copiedLib/lib/jquery.i18n.properties-1.0.9.js&quot;&gt;&lt;/script&gt;
@@ -108,7 +134,6 @@ html
               &lt;script src=&quot;/src/main/js/service/pageJumpService.js&quot;&gt;&lt;/script&gt;
               &lt;script src=&quot;/src/main/js/service/statusService.js&quot;&gt;&lt;/script&gt;
               &lt;script src=&quot;/src/main/js/service/videoService.js&quot;&gt;&lt;/script&gt;
-              &lt;/head&gt;
         section
           h3 What's the problem?
           ul
@@ -177,7 +202,7 @@ html
         section
           h3 Questions for 1st Part
         section
-          h1 Part 2: Test
+          h2 Part 2: Test
         section
           h2 We do BDD with Jasmine
         section
@@ -215,27 +240,21 @@ html
           ul
             li Written in Java
             li Maven plugin
-            li Coverage in the way
+            li Coverage
           ul
             li Inactive development
             li Not easy to run manually
             li Slow...
         section
-          h3 Nobody like Slow-test
+          h3 Nobody likes Slow-Test
           h4 Even <span style="color: red;">Jenkins</span>
           img(src="img/jenkins.png")
         section
-          h3 Switch to "Test'em"
+          h3 Switch to Test'em
           blockquote
             | makes it so easy that you will actually want to write tests.
         section
-          h3 Why we chose it
-          ul
-            li By javascript runs in <strong>Node.js</strong>
-            li Cross platform
-            li Supports IE 7~9(by compatibility mode)
-            li Integrates with Jenkins
-            li Auto-refresh
+          h3 Why we choose it
         section
           h3 Written by js, runs in Node
           pre
@@ -249,13 +268,37 @@ html
           pre
             code(contenteditable)
               | $ testem launchers
+              | Browsers available on this system:
+              | IE7
+              | IE8
+              | IE9
+              | Chrome
+              | Firefox
+              | Safari
+              | Opera
+              | PhantomJS
+        section
+          h3 Support PhantomJS
+          img(src="img/phantomjs.png")
         section
           h3 Auto Refresh
           h4 make writing test fun
-        section
-          img(src="testem_autorefresh.png")
+          img(src="img/testem_autorefresh.png")
         section
           h3 Incredibly Fast
+          pre
+            code(contenteditable)
+              | $ testem ci
+              | # Launching Chrome
+              | # ............................................
+              | ......
+              | # Launching PhantomJS
+              | # ............................................
+              | ......
+              | 1..81
+              | # tests 81
+              | # pass  81
+              | # ok
         section
           h3 Coverage
         section
@@ -268,7 +311,7 @@ html
           h3 Highly Tested === Easy to Refactor
         section
           h3 So, We need to get coverage
-          h4 In "Test'em"
+          h4 In Test'em
         section
           h3 How
           ul
@@ -277,13 +320,26 @@ html
             li Inject lcov-reporter into browser
         section
           h3 Using Sonar to visualize it
+          img(src="img/sonar.png")
         section
           h3 Integrate with Jenkins
           ul
             li run Test'em in POST build script
+          img(src="img/jenkins_testem.png")
+        section
+          ul
             li use TAP as reporter
+          img(src="img/jenkins_tap.png")
+        section
+          h3 Next plan: make it better!
+          ul
+            li High Coverage
+            li A MVC framework
+            li CoffeeScript
+            li Make it faster
         section
           h2 Thanks for coming!
+          h3 <em style="color: red;">新年快乐!</em>
     script(src="lib/js/head.min.js")
     script(src="js/reveal.min.js")
 
