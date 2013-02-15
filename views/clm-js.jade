@@ -26,14 +26,17 @@ html
     .reveal
       .slides
         section
-          h2 Javascript Project in CLM
+          h2 Javascript Project in
+          h2 Authoring Tool
         section
           h3 What I'm gonna share
+        section
+          h3 Part 1
           ul
-            li Js project structure of CLM
+            li Structure of JS in Authoring Tool
             li Why we use RequireJS
         section
-          h3 Then
+          h3 Part 2
           ul
             li BDD with Jasmine
             li Test js in browsers
@@ -41,9 +44,9 @@ html
             li Get coverage and use Sonar
             li Integrate with Jenkins
         section
-          h2 Part1: Structure
+          h2 Part 1: Structure
         section
-          img(src="img/CLM-JS-Structure.svg")
+          img(src="img/CLM-JS-Structure.png")
         section
           h3 Why <a>DOM-SERVICE-API</a>
           ul
@@ -146,7 +149,7 @@ html
           p DOM.js depends on jQuery
           pre
             code(contenteditable)
-              | define(['jquery', 'exports', 'bootstrap'], function($, exports) {
+              | define(['jquery'], function($) {
               |   ...
               | })
           br
@@ -204,7 +207,10 @@ html
         section
           h2 Part 2: Test
         section
-          h2 We do BDD with Jasmine
+          h2 We do BDD
+          h4 with Jasmine
+        section
+          img(src="img/bdd_jasmine.png")
         section
           h3 BDD is <strong>writable</strong> & <strong>readable</strong>
           pre
@@ -212,22 +218,11 @@ html
               | describe("click add new question button", function() {
               |   describe("when add questions in one page", function() {
               |     it("should send the right sequence number", function() {
-              |       //Write you test here
+              |       expect(api.addQuestion).toHaveBeenCalled();
+              |       expect(question.seq).toEqual(1);
               |     });
               |   });
               | });
-        section
-          h3 Jasmine
-          h4 writing test naturally
-          pre
-            code(contenteditable)
-              | expect(sum).toEqual(10);
-              | expect(result).toContain("foo")
-              | expect(myFunction).toHaveBeenCalled()
-              | expect(myFunction).toHaveBeenCalledWith(1, 2)
-        section
-          h3 Read the result
-          img(src="img/bdd_jasmine.png")
         section
           h3 Test in browsers
           img(src="img/browsers.jpg")
@@ -333,13 +328,13 @@ html
         section
           h3 Next plan: make it better!
           ul
-            li High Coverage
             li A MVC framework
             li CoffeeScript
             li Make it faster
         section
+          h2 Questions for 2nd Part?
+        section
           h2 Thanks for coming!
-          h3 <em style="color: red;">新年快乐!</em>
     script(src="lib/js/head.min.js")
     script(src="js/reveal.min.js")
 
