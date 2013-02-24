@@ -55,14 +55,12 @@ html
             li Maintainable
         section
           h2 Simple is everything
-          ul
-            li DOM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> jQuery
-            li SERVICE -> Call api
-            li API&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> Already there
+          img(src="img/dependency.png")
         section
           h2 Easy to test
         section
           h3 Test DOM: Mock HTML
+          img(src="img/test_dom.png")
           pre
             code(contenteditable)
               | beforeEach(function() {
@@ -77,14 +75,18 @@ html
               | })
         section
           h3 Test SERVICE: Mock API
+          img(src="img/test_service.png")
           pre
             code(contenteditable)
-              | spyOn(api, 'addQuestion').andReturn(
+              | beforeEach(function() {
+              |   spyOn(api, 'addQuestion').andReturn(
               |     {
               |         done: function() { return this; },
               |         fail: function() { return this; }
               |     }
-              | );
+              |   );
+              |   eventbus.trigger(event.ADD_QUESTION);
+              | });
               | describe('when add questions in one page', function() {
               |   it('should send the right sequence number', function() {
               |     expect(api.addQuestion).toHaveBeenCalled();
