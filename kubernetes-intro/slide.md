@@ -171,18 +171,6 @@ kubectl apply -f new-deploy.yaml
 
 ---
 
-# Scheduling unit
-
-- Jobs: like a deployment
-  - tasks: a set of Linux processes running in a container (-> Pod)
-- prod jobs: long running services (Gmail, BigTable, etc)
-- non-prod jobs: batch, hours to days
-- BCL: configuration language (-> yaml)
-  - 10^4 files with 1k LoC, total 10^7 LoC
-  
-
----
-
 # Architecture
 ![bg right](./borg-arch.png)
 
@@ -194,6 +182,17 @@ diff:
 - no etcd
 - runs on bare metal
 - use Chubby and BNS for service discovery
+
+---
+
+# Scheduling unit
+
+- Jobs: like a deployment
+  - tasks: a set of Linux processes running in a container (-> Pod)
+- prod jobs: long running services (Gmail, BigTable, etc)
+- non-prod jobs: batch, hours to days
+- BCL: configuration language (-> yaml)
+  - 10^4 files with 1k LoC, total 10^7 LoC
 
 ---
 
